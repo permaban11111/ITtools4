@@ -19,7 +19,7 @@ def test_apartment_fields():
     assert data.name == "Test Apartment"
     assert data.location == "Test Location"
     assert data.area_m2 == 50.0
-    assert len(data.rooms) == 2
+    assert len(data.rooms) == 3, f"Oczekiwano 3 mieszkan, ale znaleziono {len(data.rooms)}"
 
 
 def test_apartment_from_dict():
