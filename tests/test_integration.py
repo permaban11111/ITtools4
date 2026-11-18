@@ -24,3 +24,14 @@ def test_tenants_in_manager():
     assert len(manager.tenants) == len(expected_names)
     for tenant in manager.tenants.values():
         assert tenant.name in expected_names
+
+def test_tenants_have_valid_apartments():
+    parameters = Parameters()
+    manager = Manager(parameters)
+
+    assert manager.validate_tenants_apartments() is True
+
+    first_tenant = next(iter(manager.tenants.values()))
+    first_tenant.apartment = "nieistniejace-mieszkanie"
+
+    assert manager.validate_tenants_apartments() is False
